@@ -1,0 +1,164 @@
+/* Portfolio Section Styles */
+.portfolio-section {
+  width: 100%;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.project-category {
+  margin-bottom: 40px;
+}
+
+.project-category h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: left;
+  color: #333;
+}
+
+/* Portfolio Items */
+.portfolio-items {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 30s linear infinite;
+}
+
+.portfolio-item {
+  min-width: 250px;
+  max-width: 200px;
+  background-color: yellow;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Project Link Button - Initially hidden */
+.project-link {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 0.9em;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show link on hover */
+.portfolio-item:hover .project-link {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .portfolio-items {
+    overflow-x: scroll;
+    /* Disable animation on small screens */
+  }
+
+  .portfolio-item {
+    width: 85vw;
+  }
+
+  /* Adjust button position for smaller screens */
+  .project-link {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .portfolio-items {
+    overflow-x: scroll;
+    /* Disable animation on small screens */
+  }
+
+  .portfolio-item {
+    width: 85vw;
+  }
+
+  /* Adjust button position for smaller screens */
+  .project-link {
+    bottom: 20px;
+  }
+
+  .portfolio-section {
+    padding: 20px 10px;
+    overflow: hidden;
+  }
+
+  .project-category h2 {
+    font-size: 24px;
+    text-align: left;
+    color: #333;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Loading overlay styles */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.loading-overlay .spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ddd;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Show loading overlay */
+.loading-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

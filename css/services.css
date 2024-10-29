@@ -1,0 +1,136 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+
+  color: #333;
+}
+
+/* Services Container */
+
+.services-container h1 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #007bff;
+}
+
+/* Service Card */
+.services-container {
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end; /* Menyusun kartu ke kanan */
+  gap: 20px; /* Jarak antar kartu */
+  flex-wrap: wrap; /* Membuat kartu otomatis turun di layar sempit */
+}
+
+.service-card {
+  width: 300px; /* Lebar kartu */
+  background-color: yellow;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px 0;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .services-container {
+    justify-content: center; /* Memusatkan di layar sempit */
+  }
+
+  .service-card {
+    width: 90%; /* Lebar kartu pada layar tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    width: 100%; /* Lebar penuh pada layar ponsel */
+    padding: 15px;
+  }
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styling */
+.service-card .icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: #007bff;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .icon {
+  transform: rotate(360deg);
+}
+
+.service-card h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.service-card p {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.service-card ul {
+  list-style: none;
+}
+
+.service-card li {
+  font-size: 1em;
+  color: #666;
+  margin: 8px 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .services-container h1 {
+    font-size: 2em;
+  }
+
+  .service-card {
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+  }
+
+  .service-card .icon {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-container h1 {
+    font-size: 1.5em;
+  }
+
+  .service-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .service-card .icon {
+    font-size: 1.5em;
+  }
+}
+
+/* Hide meteors on mobile */
+@media (max-width: 768px) {
+  .meteor {
+    display: none;
+  }
+}

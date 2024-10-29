@@ -1,0 +1,542 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Mencegah scrollbar muncul */
+  background-color: #2c2c2c; /* Latar belakang utama */
+  color: #ffffff;
+  position: relative; /* Agar meteor tetap berada dalam body */
+}
+
+.meteor {
+  position: absolute;
+  top: -100px; /* Posisi meteor dimulai dari luar layar (atas) */
+  width: 2px; /* Lebar meteor */
+  height: 80px; /* Panjang meteor */
+  background-color: #ffbb33; /* Warna meteor */
+  box-shadow: 0 0 10px #ffbb33, 0 0 20px #ffbb33, 0 0 30px #ffbb33;
+  opacity: 0.7;
+  transform: rotate(45deg); /* Miringkan meteor */
+  animation: fall linear infinite; /* Animasi jatuh terus-menerus */
+  pointer-events: none; /* Agar meteor tidak bisa diinteraksi */
+  z-index: -999;
+}
+
+/* Animasi untuk meteor */
+@keyframes fall {
+  0% {
+    top: -100px; /* Mulai di luar layar (atas) */
+    left: calc(100vw * var(--random-x)); /* Posisi horizontal acak */
+    opacity: 1; /* Meteor terlihat jelas saat muncul */
+  }
+  100% {
+    top: 100vh; /* Meteor jatuh hingga keluar bawah layar */
+    left: calc(100vw * var(--random-x-end)); /* Pergerakan horizontal acak */
+    opacity: 0; /* Menghilang saat mendekati dasar */
+  }
+}
+
+/* Membuat beberapa meteor dengan variabel acak */
+.meteor:nth-child(1) {
+  --random-x: 0.2;
+  --random-x-end: 0.15;
+  animation-duration: 2.5s;
+}
+
+.meteor:nth-child(2) {
+  --random-x: 0.4;
+  --random-x-end: 0.3;
+  animation-duration: 3s;
+}
+
+.meteor:nth-child(3) {
+  --random-x: 0.7;
+  --random-x-end: 0.6;
+  animation-duration: 3.2s;
+}
+
+.meteor:nth-child(4) {
+  --random-x: 0.8;
+  --random-x-end: 0.7;
+  animation-duration: 2.8s;
+}
+
+.meteor:nth-child(5) {
+  --random-x: 0.9;
+  --random-x-end: 0.85;
+  animation-duration: 2.7s;
+}
+
+/* Style untuk navbar ala Instagram */
+.navbar {
+  background-color: #1e1e1e; /* Background navbar gelap */
+  border-radius: 20px;
+  padding: 10px;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lebih gelap */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  border: 1px solid #444; /* Border yang lebih gelap */
+  animation: rainbow-border 5s linear infinite; /* Menambahkan animasi border */
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  flex-grow: 1;
+  text-align: center;
+  position: relative; /* Untuk tooltip positioning */
+}
+
+.navbar ul li a {
+  color: #ffffff; /* Warna ikon putih */
+  text-decoration: none;
+  font-size: 22px;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.navbar ul li a:hover {
+  color: #ffbb33; /* Warna saat hover */
+}
+
+/* Tooltip styling */
+.navbar ul li a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333; /* Background tooltip */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.navbar ul li a:hover::after {
+  opacity: 1;
+}
+
+/* Animasi transisi halaman seperti kertas tertarik */
+.content {
+  transform: scale(1); /* Mulai dari ukuran normal */
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; /* Transisi untuk konten */
+  opacity: 1;
+}
+
+.slide-out {
+  transform: scale(0); /* Kecilkan konten menjadi 0 */
+  opacity: 0; /* Sembunyikan konten */
+}
+
+/* Untuk layar desktop */
+@media (min-width: 768px) {
+  .navbar {
+    width: 70px;
+    height: 350px;
+    padding: 20px 0;
+    border-radius: 20px;
+    left: auto;
+    right: 50px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .navbar ul li a {
+    padding: 20px 0;
+    font-size: 22px;
+  }
+
+  .content {
+    margin-left: 100px;
+    padding: 20px;
+  }
+}
+
+.content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  color: #ffbb33; /* Warna judul */
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* navbar border */
+@keyframes rainbow-border {
+  0% {
+    border-color: red;
+  }
+  14% {
+    border-color: orange;
+  }
+  28% {
+    border-color: yellow;
+  }
+  42% {
+    border-color: green;
+  }
+  57% {
+    border-color: blue;
+  }
+  71% {
+    border-color: indigo;
+  }
+  85% {
+    border-color: violet;
+  }
+  100% {
+    border-color: red;
+  }
+}
+
+/* Footer ticker untuk desktop */
+.footer-ticker {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  /* background-color: #333; */
+  padding: 10px 0;
+}
+
+.ticker-wrap {
+  display: flex;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-flex;
+  animation: ticker 15s linear infinite;
+}
+
+.moving-image {
+  height: 50px;
+  margin-right: 20px;
+}
+
+/* Animasi bergerak ke kiri, lalu kembali ke kanan */
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Media query untuk perangkat handphone */
+@media (max-width: 768px) {
+  .footer-ticker {
+    top: 0; /* Pindahkan ke atas */
+    bottom: auto;
+    padding: 10px;
+    /* background-color: #444; Warna background navbar */
+    display: flex;
+    justify-content: center;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); Shadow untuk navbar */
+    z-index: 1000; /* Agar tetap di atas konten lainnya */
+  }
+
+  /* Ukuran gambar lebih kecil di handphone */
+  .moving-image {
+    height: 30px;
+    margin-right: 15px;
+  }
+}
+
+/* Tambahan CSS untuk animasi ngetik dan foto */
+.typing {
+  display: inline-block;
+  font-size: 24px;
+  color: #ffbb33; /* Warna teks */
+  border-right: 2px solid #ffbb33; /* Kursor ngetik */
+  white-space: nowrap; /* Tidak membungkus teks */
+  overflow: hidden; /* Menyembunyikan teks yang belum ditampilkan */
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-color: red;
+  }
+  14% {
+    border-color: orange;
+  }
+  28% {
+    border-color: yellow;
+  }
+  42% {
+    border-color: green;
+  }
+  57% {
+    border-color: blue;
+  }
+  71% {
+    border-color: indigo;
+  }
+  85% {
+    border-color: violet;
+  }
+  100% {
+    border-color: red;
+  }
+}
+
+/* Default layout (untuk layar besar) */
+.container {
+  display: flex;
+  height: 70%;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: row; /* Layout default dengan gambar di samping teks */
+  justify-content: flex-start; /* Posisikan konten ke kiri */
+}
+
+.content {
+  max-width: 700px; /* Lebar maksimum untuk teks */
+  margin-left: 20px; /* Tambahkan jarak antara teks dan gambar */
+  height: auto;
+  padding: 0;
+  border: none; /* Hilangkan border warna-warni */
+}
+
+/* Latar belakang animasi air terjun */
+
+.profile-photo .foto {
+  width: 100%; /* Mengisi kartu */
+  border-radius: 15px; /* Sudut membulat untuk gambar */
+  position: relative; /* Agar gambar berada di atas latar belakang animasi */
+  z-index: 1; /* Agar gambar berada di atas latar belakang */
+}
+
+.content {
+  position: relative; /* Mengatur konten untuk dapat posisinya di atas latar belakang */
+  z-index: 1; /* Agar konten berada di atas latar belakang */
+  padding: 20px; /* Jarak antara konten dan tepi kartu */
+}
+
+.text-content {
+  margin: 20px;
+}
+
+.typing,
+h1,
+h2,
+p {
+  color: #ffbb33; /* Warna judul */
+  padding: 10px;
+}
+
+/* Layout untuk perangkat mobile */
+@media (max-width: 768px) {
+  p {
+    display: none; /* Sembunyikan paragraf di layar kecil */
+  }
+  .container {
+    flex-direction: column; /* Gambar di atas teks */
+    align-items: center;
+    height: 100%;
+    margin-bottom: 10px; /* Tambahkan jarak antara teks dan gambar */
+    padding: 10px;
+  }
+
+  .content {
+    margin-bottom: 10px; /* Tambahkan jarak antara teks dan gambar */
+    padding: 10px; /* Berikan jarak dalam konten */
+  }
+
+  .profile-card .foto {
+    width: 70%;
+    height: 66%;
+    margin-left: 40px;
+
+    /* Tambahkan jarak di bawah gambar */
+  }
+  .profile-card {
+    width: 50%;
+    margin-left: 0;
+    /* Tambahkan jarak di bawah gambar */
+  }
+  .social-media {
+    margin-top: 0;
+    height: 50%;
+    margin-left: 0;
+  }
+}
+
+/* Layout untuk tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Gambar di bawah teks */
+    align-items: center;
+    height: 100%;
+  }
+
+  .content {
+    margin-bottom: 20px; /* Jarak antara teks dan gambar */
+    padding: 20px;
+  }
+  .profile-card {
+    margin-left: 0px;
+    width: 100%;
+    height: 40%;
+  }
+
+  .profile-card .foto {
+    margin-left: 0px;
+    width: 100%;
+    height: 65%;
+  }
+}
+
+/* Layout untuk layar laptop */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row; /* Gambar dan teks di samping satu sama lain */
+    justify-content: flex-start; /* Posisikan konten ke kiri */
+  }
+
+  .content {
+    margin-right: 40px; /* Tambahkan jarak antara teks dan gambar */
+    padding: 0;
+  }
+
+  .profile-card {
+    margin-left: 20px; /* Jarak antara gambar dan teks serta navbar */
+    margin-top: 0; /* Hapus jarak di atas */
+  }
+}
+
+/* Profile Card */
+.profile-card {
+  width: 200px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.profile-card:hover .card-inner {
+  transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  flex-direction: column;
+}
+
+.card-front {
+  background-color: yellow;
+  z-index: 2;
+}
+
+.card-front .profile-photo {
+  width: 80%;
+  border-radius: 50%;
+}
+
+.card-back {
+  background-color: #333;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.social-media a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-media a:hover {
+  color: #ffd700;
+}
+
+/* Scrolling text animation */
+.scrolling-text {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px; /* padding to prevent text from touching the edges */
+  font-size: 18px;
+  color: #ffd700;
+  font-family: monospace;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.scrolling-text span {
+  display: inline-block;
+  animation: scroll-left 10s linear infinite; /* slow down animation duration */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

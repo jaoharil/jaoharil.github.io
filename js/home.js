@@ -56,3 +56,33 @@ function eraseWriter(text, i) {
     setTimeout(startTypingAnimation, 500); // Tunggu sebelum memulai ngetik teks berikutnya
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const textElement = document.getElementById('role-text');
+  const roles = ['Frontend Dev', 'Laravel Dev'];
+  let currentRole = 0;
+  let currentCharIndex = 0;
+
+  function type() {
+    if (currentCharIndex < roles[currentRole].length) {
+      textElement.innerHTML += roles[currentRole].charAt(currentCharIndex);
+      currentCharIndex++;
+      setTimeout(type, 100); // adjust speed here
+    } else {
+      setTimeout(erase, 2000); // hold the text before erasing
+    }
+  }
+
+  function erase() {
+    if (currentCharIndex > 0) {
+      textElement.innerHTML = roles[currentRole].substring(0, currentCharIndex - 1);
+      currentCharIndex--;
+      setTimeout(erase, 50); // adjust erase speed here
+    } else {
+      currentRole = (currentRole + 1) % roles.length;
+      setTimeout(type, 500); // start typing the next role
+    }
+  }
+
+  type(); // start the typing animation
+});
