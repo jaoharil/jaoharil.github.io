@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   </head>
   <body>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
-    <div class="meteor"></div>
     <nav class="navbar">
       <ul>
         <li>
@@ -31,47 +26,78 @@
       </ul>
     </nav>
 
-    <section class="portfolio-section">
-      <!-- Frontend Projects -->
-      <div class="project-category">
-        <h2 style="color: yellow">Frontend Projects</h2>
-        <div class="portfolio-items">
-          <div class="portfolio-item">
-            <img src="/assets/projeck/Anime.png" alt="Frontend Project 1" />
-            <h3 style="color: black">React Move Anime</h3>
-            <p>Built an interactive e-commerce platform using React and Material-UI.</p>
-            <a href="https://github.com/jaoharil/movie-anime" class="project-link">View Project</a>
+    <div class="slider">
+      <div class="list">
+        <div class="item">
+          <img src="assets/projeck/anime.png" alt="kimetsunoyiba" />
+          <div class="detail">
+            <div class="title">Move Anime</div>
+            <div class="name">javascript</div>
+            <figure>
+              <!-- <img src="/asset/avatar/kimetsunoyaiba.jpg" alt="" /> -->
+              <figcaption>Move Anime ini di buat dengan bahasa javascript css dan html</figcaption>
+            </figure>
+            <a href="https://github.com/jaoharil/movie-anime">
+              <div class="more">More Details 🔜</div>
+            </a>
           </div>
-          <div class="portfolio-item">
-            <img src="/assets/projeck/rental.png" alt="Frontend Project 2" />
-            <h3 style="color: black">Vue.js Blog</h3>
-            <p>Developed a dynamic blog with responsive design using Vue.js.</p>
-            <a href="#" class="project-link">View Project</a>
+        </div>
+        <div class="item">
+          <img src="assets/projeck/defoode.png" alt="jujutsu" />
+          <div class="detail">
+            <div class="title">Defood</div>
+            <div class="name">CodeIgniter</div>
+            <figure>
+              <!-- <img src="/asset/avatar/kimetsunoyaiba.jpg" alt="" /> -->
+              <figcaption>Defood ini di buat menggunakan bahasa pemrograman php dengan framework CodeIgniter dan botstrapp</figcaption>
+            </figure>
+            <a href="https://github.com/jaoharil/DEfood">
+              <div class="more">More Details 🔜</div>
+            </a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="assets/projeck/rental.png" alt="onepice" />
+          <div class="detail">
+            <div class="title">RentDrive</div>
+            <div class="name">Laravel</div>
+            <figure>
+              <!-- <img src="/asset/avatar/kimetsunoyaiba.jpg" alt="" /> -->
+              <figcaption>
+                Rendrive atau rental mobil motor ini di buat dengan bahasa php dengan framework Laravel dan menggunakan botstrapp. Rendrive ini di documentasi tidak public di github karna ini projeck salah satu projeck team ber-5
+              </figcaption>
+            </figure>
+            <a href="https://github.com/jaoharil/rentdrive"> <div class="more">More Details 🔜</div></a>
+          </div>
+        </div>
+      </div>
+      <!-- img yang kecil -->
+      <div class="thumbnail">
+        <div class="item">
+          <img src="assets/projeck/1a.png" alt="kimetsu" />
+          <div class="detail">
+            <div class="name">Move Anime</div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="assets/projeck/defoode.png" alt="Jujutsu" />
+          <div class="detail">
+            <div class="name">Defoode</div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="assets/projeck/1b.png" alt="Jujutsu" />
+          <div class="detail">
+            <div class="name">Rentdrive</div>
           </div>
         </div>
       </div>
 
-      <!-- Laravel Projects -->
-      <div class="project-category">
-        <h2 style="color: yellow">Laravel Projects</h2>
-        <div class="portfolio-items">
-          <div class="portfolio-item">
-            <img src="/assets/projeck/Anime.png" alt="Laravel Project 1" />
-            <h3>Laravel E-commerce Backend</h3>
-            <p>Developed backend architecture for an e-commerce site using Laravel.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-          <div class="portfolio-item">
-            <img src="/assets/projeck/defoode.png" alt="Laravel Project 2" />
-            <h3 style="color: black">CMS with Laravel</h3>
-            <p>Created a content management system with Laravel and MySQL.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
+      <div class="arrows">
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
       </div>
-    </section>
-    <div class="fullscreen-loading-overlay">
-      <div class="spinner"></div>
+      <div class="loading-bar"></div>
     </div>
     <script src="js/projeck.js"></script>
   </body>
