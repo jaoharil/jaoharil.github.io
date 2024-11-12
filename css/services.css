@@ -42,11 +42,14 @@ body {
 /* Responsif untuk layar kecil */
 @media (max-width: 768px) {
   .services-container {
+    height: 100%;
     justify-content: center; /* Memusatkan di layar sempit */
   }
 
   .service-card {
-    width: 90%; /* Lebar kartu pada layar tablet */
+    width: 70%; /* Lebar kartu pada layar tablet */
+    height: 300px;
+    padding: 10px;
   }
 }
 
@@ -100,10 +103,12 @@ body {
 @media (max-width: 768px) {
   .services-container h1 {
     font-size: 2em;
+    margin-bottom: 10px;
   }
 
   .service-card {
     width: 90%;
+    height: auto;
     margin: 10px auto;
     padding: 20px;
   }
